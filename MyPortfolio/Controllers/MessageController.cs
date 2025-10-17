@@ -35,7 +35,7 @@ namespace MyPortfolio.Controllers
             return RedirectToAction("Inbox");
         }
 
-        public IActionResult MessageDetail(int id)
+        public IActionResult MessageD5etail(int id)
         {
             var value = context.Messages.Find(id);
             return View(value);
