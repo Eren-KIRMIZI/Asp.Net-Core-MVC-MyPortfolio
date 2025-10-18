@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MyPortfolio.DAL.Context;
+using MyPortfolio.DAL.Entities;
 
 namespace MyPortfolio.Controllers
 {
@@ -32,13 +33,35 @@ namespace MyPortfolio.Controllers
         {
             var value = context.Messages.Find(id);
             context.Messages.Remove(value);
+            context.SaveChanges();
             return RedirectToAction("Inbox");
         }
 
-        public IActionResult MessageD5etail(int id)
+        public IActionResult MessageDetail(int id)
         {
             var value = context.Messages.Find(id);
             return View(value);
         }
+
+        [HttpPost]
+        public IActionResult SendMessage(string contactName, string contactEmail, string contactSubject, string contactMessage)
+        {
+            var msg = new Message
+            {
+                NameSurname = contactName,
+                Email = contactEmail,
+                Subject = contactSubject,
+                MessageDetail = contactMessage,
+                SendDate = DateTime.Now,
+                IsRead = false
+            };
+
+            context.Messages.Add(msg);
+            context.SaveChanges();
+
+            TempData["Success"] = "Mesajınız başarıyla gönderildi!";
+            return RedirectToAction("Index", "Default"); // anasayfaya geri döner
+        }
+
     }
 }
