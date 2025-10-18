@@ -1,5 +1,8 @@
 # MyPortfolio — ASP.NET Core MVC Portfolio Website
 
+https://github.com/user-attachments/assets/1149d4dc-e25b-4ef7-9e18-f008aa1c690a
+
+
 ## Proje Hakkında
 
 Bu proje, ASP.NET Core MVC teknolojisi kullanılarak geliştirilmiş kişisel bir portfolyo web sitesidir.  
